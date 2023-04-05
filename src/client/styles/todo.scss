@@ -1,0 +1,42 @@
+.todo_layout {
+  width: 80vw;
+  margin: .4rem auto;
+  .todo_add {
+    display: flex;
+    align-items: center;
+    textarea {
+      flex: 4;
+      min-height: 1rem;
+      padding: .1rem;
+      margin-right: .4rem;
+    }
+    button {
+      flex: 1;
+      height: .6rem;
+    }
+  }
+  .todo_filter {
+    display: flex;
+    li {
+      line-height: .6rem;
+      margin: .2rem;
+      padding: .2rem;
+      font-size: .28rem;
+      background: #eee;
+      &:first-child {
+        margin-left: 0;
+      }
+    }
+    :global(li.active) {
+      color: #f00;
+    }
+  }
+  .todo_list {
+    li {
+      line-height: .8rem;
+      &.completed {
+        text-decoration: line-through;
+      }
+    }
+  }
+}
