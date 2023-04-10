@@ -1,7 +1,7 @@
 import { connect } from "react-redux"
 
-import { todo_add } from '@/store/actions/todo'
-import Add from '@/components/todo/Add'
+import { todo_add } from '@/store/actions/old-todo'
+import Add from '@/components/old-todo/Add'
 
 const mapStateToProps = state => ({
   

@@ -1,6 +1,6 @@
 import { connect } from "react-redux"
 
-import { todo_clear, todo_get, todo_toggle } from '@/store/actions/old-todo'
+import { todo_clear, todo_get, todo_toggle, todo_delete } from '@/store/actions/old-todo'
 
 import constants from "@/constants"
 import List from '@/components/old-todo/List'
@@ -19,13 +19,14 @@ const getList = (list, filter) => {
 }
 
 const mapStateToProps = state => ({
-  todoList: getList(state.todo, state.filter)
+  todoList: getList(state.old_todo_list, state.old_filter)
 })
 
 const mapDispatchToProps = dispatch => ({
   do_get: () => dispatch(todo_get()),
   do_toggle: todo => dispatch(todo_toggle(todo)),
   do_clear: () => dispatch(todo_clear()),
+  do_delete: todo => dispatch(todo_delete(todo)),
 })
 
 export default connect(

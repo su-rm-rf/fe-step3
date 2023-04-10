@@ -1,18 +1,29 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { useParams } from 'react-router-dom'
 
-const Detail = ({ todo, todo_detail }) => {
+const Detail = ({ todo_detail, todo_update }) => {
 
   const { id } = useParams()
+  let [todo, setTodo]:any = useState({})
 
   useEffect(() => {
-    todo_detail(id)
+    todo_detail(id).then(res => {
+      setTodo(res)
+    })
   }, [])
 
-  console.log(todo)
+  const text = useRef()
+  const save = () => {
+    todo_update({
+      ...todo,
+      text: text.current.value
+    }).then(() => {
+      history.back()
+    })
+  }
 
   return (
-    <div className="todo_detail">
+    <div className="todo_update">
       <ul>
         <li>
           <svg width="100%" height="100%" viewBox="-10.5 -9.45 21 18.9" fill="none" xmlns="http://www.w3.org/2000/svg" 
@@ -31,12 +42,13 @@ const Detail = ({ todo, todo_detail }) => {
         </li>
         <li>
           <label htmlFor="">Text：</label>
-          <span>{todo.text}</span>
+          <textarea ref={ text } defaultValue={todo.text}></textarea>
         </li>
         <li>
           <label htmlFor="">Completed：</label>
           <span>{todo.completed === 1 ? 'Y' : 'N'}</span>
         </li>
+        <button onClick={ save }>保存</button>
       </ul>
     </div>
   )

@@ -4,6 +4,7 @@ import { BrowserRouter } from 'react-router-dom'
 import { Provider } from 'react-redux'
 
 import { getStore } from '../share/store'
+import '@/styles'
 import App from '../share/router'
 
 const store = getStore((window as any).__PRELOADED_STATE__)
@@ -13,6 +14,6 @@ hydrate(
   <Provider store={ store }>
     <BrowserRouter>
       <App />
-    </BrowserRouter>  
+    </BrowserRouter>
   </Provider>
 , document.querySelector('#root'))

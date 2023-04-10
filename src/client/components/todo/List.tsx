@@ -1,27 +1,40 @@
 import React, { useEffect } from 'react'
 
-import styles from '@/styles/index.scss'
+import { Link } from 'react-router-dom'
 
-const TodoList = ({ do_get, do_clear, todoList, do_toggle }) => {
+const TodoList = ({ do_get, do_clear, todoList, do_toggle, do_delete }) => {
 
   useEffect(() => {
     do_get()
   }, [])
 
+  const del = ({ id }) => {
+    do_delete(id)
+  }
+
   const clear = () => {
-    do_clear()
+    if (window.confirm('Sure ?')) {
+      do_clear()
+    }
   }
 
   return (
-    <div className={styles.todo_list}>
+    <div className="todo_list">
       <ul>
         {
           todoList.map(todo => 
             <li key={ todo.id } 
-              className={ !!todo.completed ? styles.completed : '' }
-              onClick={ () => do_toggle(todo) }
+              className={ !!todo.completed ? 'completed' : '' }
             >
-              { todo.text }
+              <div className="text" onClick={ () => do_toggle(todo) }>{ todo.text }</div>
+              <div className="handler">
+                {
+                  todo.completed === 0 &&
+                  <Link to={`update/${ todo.id }`}>编辑</Link>
+                }
+                <Link to={`detail/${ todo.id }`}>详情</Link>
+                <button onClick={ () => del(todo) }>删除</button>
+              </div>
             </li>
           )
         }

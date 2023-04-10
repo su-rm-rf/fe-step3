@@ -1,5 +1,5 @@
 .todo_layout {
-  width: 80vw;
+  width: 90vw;
   margin: .4rem auto;
   .todo_add {
     display: flex;
@@ -26,17 +26,63 @@
       &:first-child {
         margin-left: 0;
       }
-    }
-    :global(li.active) {
-      color: #f00;
+      &.active {
+        color: #f00;
+      }
     }
   }
   .todo_list {
     li {
       line-height: .8rem;
+      display: flex;
+      justify-content: space-between;
       &.completed {
-        text-decoration: line-through;
+        .text {
+          text-decoration: line-through;
+        }
       }
+      .handler {
+        a, button {
+          margin: 0 .2rem;
+          font-size: .26rem;
+          color: #33d;
+        }
+      }
+    }
+    > button {
+      margin-top: 3vh;
+    }
+  }
+}
+
+.todo_detail, .todo_update {
+  width: 90vw;
+  margin: .4rem auto;
+  line-height: .8rem;
+  li {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    svg {
+      width: 50vw;
+      color: #f09090;
+      margin: 5vh auto;
+    }
+    label {
+      flex: 1;
+    }
+    textarea, span {
+      flex: 2;
+    }
+    textarea {
+      min-height: 2rem;
+      padding: .1rem;
+    }
+    button {
+      line-height: .8rem;
+      width: 100%;
+      font-size: .4rem;
+      margin-top: .4rem;
     }
   }
 }

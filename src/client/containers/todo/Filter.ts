@@ -1,14 +1,14 @@
 import { connect } from "react-redux"
 
-import { todo_filter } from "@/store/actions/todo"
-import Filter from '@/components/todo/Filter'
+import { todo_filter } from "@/store/actions/old-todo"
+import Filter from '@/components/old-todo/Filter'
 
 const mapStateToProps = state => ({
-  type: state.filter
+  filter: state.filter
 })
 
 const mapDispatchToProps = dispatch => ({
-  do_filter: (type) => dispatch(todo_filter(type))
+  do_filter: (filter) => dispatch(todo_filter(filter))
 })
 
 export default connect(

@@ -1,7 +1,5 @@
 import React, { createRef } from 'react'
 
-import styles from '@/styles/index.scss'
-
 const TodoAdd = ({ do_add }) => {
   const text = createRef<HTMLTextAreaElement>()
 
@@ -14,7 +12,7 @@ const TodoAdd = ({ do_add }) => {
   }
 
   return (
-    <div className={styles.todo_add}>
+    <div className="todo_add">
       {/* <input ref={ text } /> */}
       <textarea ref={ text }></textarea>
       <button onClick={ todo_add }>Add</button>

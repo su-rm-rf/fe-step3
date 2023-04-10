@@ -5,21 +5,41 @@ body {
 }
 
 .layout {
+  position: relative;
+  .content_body {
+    margin-bottom: 1rem;
+    overflow: hidden;
+  }
   .nav_header {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: .98rem;
+    line-height: .98rem;
+    border-top: .02rem solid #ccc;
+    background: #fff;
     display: flex;
-    line-height: .8rem;
-    text-align: center;
-    border-bottom: .02rem solid #ccc;
     a {
+      text-align: center;
       flex: 1;
       text-decoration: none;
-    }
-    :global(a.active) {
-      color: #f00;
+      &.active {
+        color: #f00;
+      }
     }
   }
-  .content_body {
-    margin: .2rem 0;
+  .loading {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba($color: #000000, $alpha: .3);
+    z-index: 999;
+    color: #fff;
+    text-align: center;
+    line-height: 100vh;
   }
 }
 

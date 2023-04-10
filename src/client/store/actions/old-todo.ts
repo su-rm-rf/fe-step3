@@ -26,6 +26,29 @@ export const todo_get_success = data => {
   }
 }
 
+export const todo_detail_start = () => {
+  return {
+    type: constants.TODO_DETAIL_START
+  }
+}
+export const todo_detail = id => {
+  return dispatch => {
+    dispatch(todo_detail_start())
+    return new Promise((resolve, reject) => {
+      axios.get(`/todo/${id}`).then(res => {
+        dispatch(todo_detail_success(res.data.data))
+        resolve(res.data.data)
+      })
+    })
+  }
+}
+export const todo_detail_success = data => {
+  return {
+    type: constants.TODO_DETAIL_SUCCESS,
+    data
+  }
+}
+
 /**
  * Add
  */
@@ -49,6 +72,29 @@ export const todo_add = text => {
 export const todo_add_success = data => {
   return {
     type: constants.TODO_ADD_SUCCESS,
+    data
+  }
+}
+
+export const todo_update_start = () => {
+  return {
+    type: constants.TODO_UPDATE_START
+  }
+}
+export const todo_update = text => {
+  return dispatch => {
+    dispatch(todo_update_start())
+    return new Promise<void>((resolve, reject) => {
+      axios.post('/todo/update', text).then(res => {
+        dispatch(todo_update_success(res.data))
+        resolve()
+      })
+    })
+  }
+}
+export const todo_update_success = data => {
+  return {
+    type: constants.TODO_UPDATE_SUCCESS,
     data
   }
 }
@@ -106,6 +152,29 @@ export const todo_toggle = todo => {
 export const todo_toggle_success = data => {
   return {
     type: constants.TODO_TOGGLE_SUCCESS,
+    data
+  }
+}
+
+export const todo_delete_start = () => {
+  return {
+    type: constants.TODO_DELETE_START
+  }
+}
+export const todo_delete = id => {
+  return dispatch => {
+    dispatch(todo_delete_start())
+    axios.post('/todo/delete', {
+      id
+    }).then(res => {
+      dispatch(todo_delete_success(res.data.data))
+      dispatch(todo_get())
+    })
+  }
+}
+export const todo_delete_success = data => {
+  return {
+    type: constants.TODO_DELETE_SUCCESS,
     data
   }
 }
