@@ -18,15 +18,8 @@ export default (ctx) => {
       </StaticRouter>
     </Provider>
   )
-
   const finalState = store.getState()
-
   ctx.body = renderFullPage(html, finalState)
-  
-  ctx.body2 = `
-    <!DOCTYPE html>
-    ${ html }
-  `
 }
 
 function renderFullPage(html, preloadedState) {

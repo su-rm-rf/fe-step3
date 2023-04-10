@@ -3,7 +3,7 @@ const setTodoList = (list) => {
 }
 
 const getTodoList = () => {
-  return JSON.parse(localStorage.getItem('todo_list')) || []
+  return JSON.parse(localStorage.getItem('todo_list') || '') || []
 }
 
 const clearTodoList = () => {

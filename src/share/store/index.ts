@@ -18,5 +18,3 @@ export const getStore = (preloadedState) => {
     applyMiddleware(thunk, logger)
   )
 }
-
-export default getStore

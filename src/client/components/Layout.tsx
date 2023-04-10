@@ -8,8 +8,8 @@ const Layout = () => {
     <div className={styles.layout}>
       <nav className={styles.nav_header}>
         <NavLink to="/">Home</NavLink>
-        {/* <NavLink to="/old-todo">OldTodo</NavLink> */}
-        <NavLink to="/old-todo">Todo</NavLink>
+        <NavLink to="/old-todo">OldTodo</NavLink>
+        <NavLink to="/todo">Todo</NavLink>
         <NavLink to="/about">About</NavLink>
       </nav>
       <div className={styles.content_body}>

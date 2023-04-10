@@ -3,8 +3,8 @@ import { combineReducers } from 'redux'
 import old_todo from './old-todo'
 import old_filter from './old-todo/filter'
 
-import todo from './old-todo'
-import filter from './old-todo/filter'
+import todo from './todo'
+import filter from './todo/filter'
 
 const reducer = combineReducers({
   old_todo,

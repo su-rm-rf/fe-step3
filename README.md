@@ -25,33 +25,104 @@
 ```
 
 # 组织结构
+> 划分为 client, server, share 三个目录
+
 ```
 build                       --- 构建脚本
 dist                        --- 打包生成
 public                      --- 公共资源
 src
-  components                --- UI组件
-  containers                --- 容器组件
-  constants                 --- 常量
-  router                    --- 路由
-  store                     
-    actions                 --- action creators
-    reducers                --- reducer
-  styles                    --- 样式
-  utils                     --- 工具
-  App.tsx
-  main.tsx
-test                        --- 测试
+  client
+    components                --- UI组件
+    containers                --- 容器组件
+    constants                 --- 常量
+    store                     
+      actions                 --- action creators
+      reducers                --- reducer
+    styles                    --- 样式
+    utils                     --- 工具
+    index.tsx                 --- 客户端入口
+  server
+    index.tsx                 --- 服务端入口
+    render.tsx
+  share
+    router                    --- 路由
+    store                     --- 状态管理
+test
 ```
-
-> component, container, store/action, store/reducer 都按照业务功能模块划分
 
 # 技术拆解
+## css module
 ```
-响应式布局
-使用localStorage实现本地任务管理
-使用Nodejs服务端实现本地任务管理
+{
+  {
+    loader: 'css-loader',
+    options: {
+      modules: true
+    }
+  },
+  'postcss-loader',
+  'less-loader',
+  'sass-loader',
+}
+
+.parent {
+  .child { }
+  :global(.child2) { }
+}
+
+import styles from '@/styles/index.scss'
+
+<div className={styles.parent}>
+  <div className="child2"></div>
+  <div className={styles.child}></div>
+</div>
 ```
+
+# TypeScript
+```
+jsx: react-jsx  转化JSX
+resolveJsonModule: true  支持导入json文件
+```
+
+## webpack
+> 先配置common部分，再将client和server分别合并配置
+
+common
+```
+```
+
+server
+```
+target: 'node',                       忽略内置模块
+externalsPresets: { node: true },     忽略内置模块
+externals: [nodeExternals()]          忽略node_modules中的所有模块
+```
+
+client
+```
+```
+
+转化jsx和tsx  babel-loader
+resolve
+  extensions 后缀自动识别
+  alias 模块别名
+
+## 同构：
+renderToString 将客户端组件渲染成HTML字符串
+hydrate 水合，在SSR之后，在客户端对页面事件绑定等内容进行特殊处理
+BrowserRouter 支持页面链接跳转
+StaticRouter 支持浏览器访问
+
+脱水
+注水
+
+## server
+解析dist/static文件夹为静态访问
+路由根路径，访问后进行服务端渲染
+## 
+client
+
 
 
 # TypeScript配置
@@ -76,28 +147,6 @@ test                        --- 测试
 ```
 
 # 依赖项
-```
-webpack打包构建
-  webpack webpack-cli webpack-dev-server webpack-merge
-html
-  html-webpack-plugin
-css
-  style-loader css-loader sass sass-loader less less-loader postcss postcss-loader postcss-preset-env mini-css-extract-plugin
-typescript
-react
-  react react-dom react-router react-router-dom redux react-redux redux-thunk redux-logger
-thread-loader
-babel
-  @babel/core babel-loader @babel/preset-env @babel/preset-react @babel/plugin-transform-runtime @babel/preset-typescript
-axios
-UI
-  ant-design echarts
-test
-  jest
-eslint
-@types/react @types/react-dom
-cross-env nodemon ts-node
-```
 
 # 常见错误
 ```
