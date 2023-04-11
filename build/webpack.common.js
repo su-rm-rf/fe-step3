@@ -1,19 +1,10 @@
 const { resolve, join } = require('path')
-const pkage = require('../package.json')
-const HtmlWebpackPlugin = require('html-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const CopyPlugin = require('copy-webpack-plugin')
 
 const isDev = process.env.NODE_ENV === 'development' 
 
 module.exports = {
-  entry: './src/main.tsx',
-  output: {
-    path: resolve(__dirname, '../dist'),
-    filename: 'static/[name].[chunkhash:8].js',
-    publicPath: '/',
-    // publicPath: 'http://localhost:8421/',
-  },
   module: {
     rules: [
       {
@@ -66,10 +57,6 @@ module.exports = {
     }
   },
   plugins: [
-    // new HtmlWebpackPlugin({
-    //   template: resolve(__dirname, '../public/index.html'),
-    //   title: pkage.name
-    // }),
     new MiniCssExtractPlugin({
       // filename: 'static/css/[name].[chunkhash:8].css'
       filename: 'main.css'

@@ -12,7 +12,7 @@ const client = merge(common, {
   output: {
     path: resolve(__dirname, '../dist/static'),
     filename: 'client.js',
-    // clean: true,
+    publicPath: '/',
   },
 })
 
@@ -24,6 +24,7 @@ const server = merge(common, {
   output: {
     path: resolve(__dirname, '../dist/static'),
     filename: 'server.js',
+    publicPath: '/',
   },
   target: 'node',
   externals: [nodeExternals()]
