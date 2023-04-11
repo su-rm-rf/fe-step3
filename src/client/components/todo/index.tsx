@@ -1,8 +1,8 @@
 import React from 'react'
 
-import Add from '@/containers/old-todo/Add'
-import Filter from '@/containers/old-todo/Filter'
-import List from '@/containers/old-todo/List'
+import Add from '@/containers/todo/Add'
+import Filter from '@/containers/todo/Filter'
+import List from '@/containers/todo/List'
 
 const Todo = () => {
   return (

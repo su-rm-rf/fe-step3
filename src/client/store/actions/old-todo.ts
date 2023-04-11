@@ -1,7 +1,11 @@
 import constants from '@/constants'
-import axios from 'axios'
+// import axios from 'axios'
 
-axios.defaults.baseURL = 'http://localhost:8602'
+// axios.defaults.baseURL = 'http://localhost:8602'
+
+// console.log(axios.defaults.baseURL)
+
+import axios from '@/utils/axios'
 
 /**
  * List
@@ -14,7 +18,7 @@ export const todo_get_start = () => {
 export const todo_get = () => {
   return dispatch => {
     dispatch(todo_get_start())
-    axios.get('/todo/list').then(res => {
+    axios.get1('/todo/list').then(res => {
       dispatch(todo_get_success(res.data.data))
     })
   }
@@ -35,7 +39,7 @@ export const todo_detail = id => {
   return dispatch => {
     dispatch(todo_detail_start())
     return new Promise((resolve, reject) => {
-      axios.get(`/todo/${id}`).then(res => {
+      axios.get1(`/todo/${id}`).then(res => {
         dispatch(todo_detail_success(res.data.data))
         resolve(res.data.data)
       })
@@ -60,7 +64,7 @@ export const todo_add_start = () => {
 export const todo_add = text => {
   return dispatch => {
     dispatch(todo_add_start)
-    axios.post('/todo/add', {
+    axios.post1('/todo/add', {
       text,
       completed: 0
     }).then(res => {
@@ -85,7 +89,7 @@ export const todo_update = text => {
   return dispatch => {
     dispatch(todo_update_start())
     return new Promise<void>((resolve, reject) => {
-      axios.post('/todo/update', text).then(res => {
+      axios.post1('/todo/update', text).then(res => {
         dispatch(todo_update_success(res.data))
         resolve()
       })
@@ -113,7 +117,7 @@ export const todo_update_success = data => {
 export const todo_filter = filter => {
   return dispatch => {
     dispatch(todo_filter_start(filter))
-    axios.get('/todo/list', {
+    axios.get1('/todo/list', {
       params: {
         completed: filter
       }
@@ -140,7 +144,7 @@ export const todo_toggle_start = () => {
 export const todo_toggle = todo => {
   return dispatch => {
     dispatch(todo_toggle_start())
-    axios.post('/todo/update', {
+    axios.post1('/todo/update', {
       id: todo.id,
       completed: todo.completed === 0 ? 1 : 0
     }).then(res => {
@@ -164,7 +168,7 @@ export const todo_delete_start = () => {
 export const todo_delete = id => {
   return dispatch => {
     dispatch(todo_delete_start())
-    axios.post('/todo/delete', {
+    axios.post1('/todo/delete', {
       id
     }).then(res => {
       dispatch(todo_delete_success(res.data.data))
@@ -190,7 +194,7 @@ export const todo_clear_start = () => {
 export const todo_clear = () => {
   return dispatch => {
     dispatch(todo_clear_start())
-    axios.post('/todo/clear')
+    axios.post1('/todo/clear')
     .then(res => {
       dispatch(todo_clear_success(res.data))
       dispatch(todo_get())

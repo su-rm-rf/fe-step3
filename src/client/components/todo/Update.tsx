@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, { createRef, useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 
 const Detail = ({ todo_detail, todo_update }) => {
@@ -12,7 +12,7 @@ const Detail = ({ todo_detail, todo_update }) => {
     })
   }, [])
 
-  const text = useRef()
+  const text = createRef<HTMLTextAreaElement>()
   const save = () => {
     todo_update({
       ...todo,
@@ -48,7 +48,9 @@ const Detail = ({ todo_detail, todo_update }) => {
           <label htmlFor="">Completed：</label>
           <span>{todo.completed === 1 ? 'Y' : 'N'}</span>
         </li>
-        <button onClick={ save }>保存</button>
+        <li>
+          <button onClick={ save }>保存</button>
+        </li>
       </ul>
     </div>
   )

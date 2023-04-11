@@ -1,7 +1,7 @@
 import { connect } from "react-redux"
 
-import { todo_filter } from "@/store/actions/old-todo"
-import Filter from '@/components/old-todo/Filter'
+import { todo_filter } from "@/store/actions/todo"
+import Filter from '@/components/todo/Filter'
 
 const mapStateToProps = state => ({
   filter: state.filter

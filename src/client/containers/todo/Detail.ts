@@ -1,7 +1,7 @@
 import { connect } from "react-redux"
 
-import Detail from '@/components/old-todo/Detail'
-import { todo_detail } from "@/store/actions/old-todo"
+import Detail from '@/components/todo/Detail'
+import { todo_detail } from "@/store/actions/todo"
 
 const mapStateToProps = (state) => ({
   todo: state.todo

@@ -31,7 +31,7 @@ function renderFullPage(html, preloadedState) {
       <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <title></title>
-      <link rel="icon" href="/logo.ico" />
+      <link rel="icon" href="/react.ico" />
       <link rel="stylesheet" href="/static/main.css?${Math.random()}" />
     </head>
     <body>

@@ -1,7 +1,7 @@
 import { connect } from "react-redux"
 
-import Update from '@/components/old-todo/Update'
-import { todo_detail, todo_update } from "@/store/actions/old-todo"
+import Update from '@/components/todo/Update'
+import { todo_detail, todo_update } from "@/store/actions/todo"
 
 const mapStateToProps = (state) => ({
   todo: state.todo

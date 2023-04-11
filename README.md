@@ -1,12 +1,17 @@
-> 纯手工从0到1编码，没有使用脚手架 <br/>
-> 
-> [GitHub地址](https://github.com/su-rm-rf/fe-step3) <br/>
-> [后端GitHub地址](https://github.com/su-rm-rf/node_server)
-
 # 需求
 ```
-开发一个TodoList任务管理工具
+开发一个在线文档任务管理工具
 ```
+
+> 纯手工从0到1编码，没有使用脚手架 <br/><br/>
+> [前端项目GitHub地址](https://github.com/su-rm-rf/fe-step3) <br/>
+> [后端项目GitHub地址](https://github.com/su-rm-rf/node_server) <br/>
+
+> 前端运行: <br/>
+> npm run dev <br/>
+> npm run ssr <br/><br/>
+> 后端运行: npm run dev <br/>
+> 访问: http://localhost:8321/old-todo
 
 # 技术栈
 ```
@@ -28,9 +33,9 @@
 > 划分为 client, server, share 三个目录
 
 ```
-build                       --- 构建脚本
-dist                        --- 打包生成
-public                      --- 公共资源
+build                         --- 构建脚本
+dist                          --- 打包生成
+public                        --- 公共资源
 src
   client
     components                --- UI组件
