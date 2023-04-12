@@ -10,9 +10,10 @@ export const todo_get_start = () => {
   }
 }
 export const todo_get = () => {
-  return dispatch => {
+  return (dispatch, getState) => {
+    const filter = getState().old_filter
     dispatch(todo_get_start())
-    axios.get2('/todo/list').then(res => {
+    axios.get2(`/todo/list?completed=${filter}`).then(res => {
       dispatch(todo_get_success(res.data.data))
     })
   }
@@ -201,4 +202,3 @@ export const todo_clear_success = data => {
     data
   }
 }
-

@@ -1,10 +1,4 @@
 import constants from '@/constants'
-// import axios from 'axios'
-
-// axios.defaults.baseURL = 'http://localhost:8602'
-
-// console.log(axios.defaults.baseURL)
-
 import axios from '@/utils/axios'
 
 /**
@@ -16,9 +10,10 @@ export const todo_get_start = () => {
   }
 }
 export const todo_get = () => {
-  return dispatch => {
+  return (dispatch, getState) => {
+    const filter = getState().old_filter
     dispatch(todo_get_start())
-    axios.get1('/todo/list').then(res => {
+    axios.get1(`/todo/list?completed=${filter}`).then(res => {
       dispatch(todo_get_success(res.data.data))
     })
   }
@@ -207,4 +202,3 @@ export const todo_clear_success = data => {
     data
   }
 }
-

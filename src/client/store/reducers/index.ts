@@ -12,7 +12,7 @@ import {
   filter,
 } from './todo'
 
-import { loading } from './utils'
+import { loading } from './global'
 
 const reducer = combineReducers({
   old_todo,

@@ -7,8 +7,8 @@ import { getStore } from '../share/store'
 import App from '../share/router'
 
 export default (ctx) => {
-  const { filter } = ctx.query
-  const preloadedState = { filter }
+  const { old_filter, filter } = ctx.query
+  const preloadedState = { old_filter, filter }
   const store = getStore(preloadedState)
 
   const html = renderToString(
